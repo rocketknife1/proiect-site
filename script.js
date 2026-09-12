@@ -45,14 +45,17 @@ document.querySelectorAll('.heart').forEach((button) => {
   });
 });
 
+function filterListings(category) {
+  document.querySelectorAll('.listing-card').forEach((card) => {
+    card.hidden = category !== 'all' && !card.dataset.category.split(' ').includes(category);
+  });
+}
+
 document.querySelectorAll('.filter').forEach((filter) => {
   filter.addEventListener('click', () => {
     document.querySelectorAll('.filter').forEach((item) => item.classList.remove('active'));
     filter.classList.add('active');
-    const category = filter.dataset.filter;
-    document.querySelectorAll('.listing-card').forEach((card) => {
-      card.hidden = category !== 'all' && !card.dataset.category.split(' ').includes(category);
-    });
+    filterListings(filter.dataset.filter);
   });
 });
 
@@ -61,9 +64,7 @@ document.querySelectorAll('.category-filter').forEach((filter) => {
     document.querySelectorAll('.category-filter').forEach((item) => item.classList.remove('active'));
     filter.classList.add('active');
     const category = filter.dataset.categoryFilter;
-    document.querySelectorAll('.listing-card').forEach((card) => {
-      card.hidden = category !== 'all' && !card.dataset.category.split(' ').includes(category);
-    });
+    filterListings(category);
     const target = category === 'events' ? document.querySelector('#events') : document.querySelector('#community');
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     if (category === 'events') {
@@ -98,4 +99,27 @@ document.querySelector('#search-button').addEventListener('click', () => {
   document.querySelector('#listings').scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
 
-document.querySelector('.menu-button').addEventListener('click', () => showToast('Navigarea mobila este pregatita pentru urmatorul pas.'));
+const siteHeader = document.querySelector('.site-header');
+const menuButton = document.querySelector('.menu-button');
+
+menuButton.addEventListener('click', () => {
+  const isOpen = siteHeader.classList.toggle('menu-open');
+  menuButton.setAttribute('aria-expanded', String(isOpen));
+  menuButton.setAttribute('aria-label', isOpen ? 'Inchide meniul' : 'Deschide meniul');
+  menuButton.textContent = isOpen ? '×' : '☰';
+});
+
+document.querySelectorAll('.main-nav a').forEach((link) => {
+  link.addEventListener('click', () => {
+    siteHeader.classList.remove('menu-open');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Deschide meniul');
+    menuButton.textContent = '☰';
+  });
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && siteHeader.classList.contains('menu-open')) {
+    menuButton.click();
+  }
+});
