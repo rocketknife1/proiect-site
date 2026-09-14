@@ -162,16 +162,20 @@ h1,h2,h3{
 .section-heading h2{font-size:clamp(30px,3.4vw,42px);max-width:520px}
 .heading-side{max-width:300px;color:var(--mist);font-size:15px;line-height:1.6}
 .heading-side a{display:inline-block;color:var(--paper);font-weight:600;margin-top:16px;border-bottom:1px solid var(--paper);padding-bottom:4px}
-.filters{display:flex;gap:10px;margin:44px 0 26px}
-.filter{background:transparent;border:1px solid transparent;padding:10px 16px;color:var(--mist);font-size:14px;font-weight:500;border-radius:999px;transition:color .2s,background .2s,border-color .2s}
-.filter:hover{color:var(--paper);background:rgba(243,239,230,.06)}
-.filter.active{color:var(--ink);background:var(--lamp)}
 .listing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .listing-card[hidden]{display:none}
 .listing-card{min-width:0}
 .card-image{height:280px;position:relative;overflow:hidden;border-radius:var(--radius)}
 .card-image img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
 .listing-card:hover .card-image img{transform:scale(1.05)}
+
+.listing-featured{grid-column:1 / -1;max-width:640px;margin:0 auto}
+.listing-gallery{position:relative;display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:340px;gap:6px;height:340px;overflow:hidden}
+.gallery-main{height:100%;border-radius:var(--radius);overflow:hidden}
+.gallery-main img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.listing-featured:hover .gallery-main img{transform:scale(1.05)}
+.gallery-thumbs{display:grid;grid-template-rows:repeat(3,1fr);gap:6px}
+.gallery-thumbs img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius-sm)}
 .heart{position:absolute;top:14px;right:14px;background:rgba(23,33,28,.7);backdrop-filter:blur(4px);color:var(--paper);border-radius:50%;width:38px;height:38px;font-size:19px;line-height:1;z-index:2;transition:transform .2s}
 .heart:hover{transform:scale(1.08)}
 .heart.saved{color:var(--lamp)}
@@ -318,6 +322,8 @@ footer .brand-mark{width:24px;height:24px;font-size:12px}
   .section-heading{align-items:start;gap:22px;flex-direction:column}
   .listing-grid{grid-template-columns:1fr 1fr}
   .card-image{height:230px}
+  .listing-featured{max-width:none}
+  .listing-gallery{height:280px}
   .how-section{grid-template-columns:1fr;padding-top:72px;padding-bottom:72px;gap:48px}
   footer{gap:15px;flex-wrap:wrap}
   footer p{order:3;width:100%;margin:0}
@@ -344,7 +350,9 @@ footer .brand-mark{width:24px;height:24px;font-size:12px}
   .search-panel{margin-left:20px;margin-right:20px}
   .listing-grid{grid-template-columns:1fr}
   .card-image{height:260px}
-  .filters{gap:8px;overflow:auto;white-space:nowrap;padding-bottom:4px}
+  .listing-gallery{grid-template-columns:1fr;grid-template-rows:220px auto;height:auto}
+  .gallery-main{height:220px}
+  .gallery-thumbs{grid-template-columns:repeat(3,1fr);grid-template-rows:none;height:90px}
   .heading-side{max-width:330px}
   .category-list{grid-template-columns:1fr 1fr;padding-left:20px;padding-right:20px}
   .category-rail{padding-left:0;padding-right:0}

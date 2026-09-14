@@ -51,14 +51,6 @@ function filterListings(category) {
   });
 }
 
-document.querySelectorAll('.filter').forEach((filter) => {
-  filter.addEventListener('click', () => {
-    document.querySelectorAll('.filter').forEach((item) => item.classList.remove('active'));
-    filter.classList.add('active');
-    filterListings(filter.dataset.filter);
-  });
-});
-
 document.querySelectorAll('.category-filter').forEach((filter) => {
   filter.addEventListener('click', () => {
     document.querySelectorAll('.category-filter').forEach((item) => item.classList.remove('active'));
