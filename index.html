@@ -3,111 +3,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NEST Valea Jiului - locuri, servicii si oameni din comunitate.">
-  <title>NEST Valea Jiului | Comunitatea locurilor bune</title>
+  <title>NEST Valea Jiului | Ce se întâmplă în Vale, azi</title>
+  <meta name="description" content="NEST Valea Jiului: evenimente, locuri de văzut, anunțuri și informații utile din Petroșani, Petrila, Aninoasa, Vulcan, Lupeni și Uricani.">
+  <meta name="theme-color" content="#17211c">
+  <meta property="og:title" content="NEST Valea Jiului">
+  <meta property="og:description" content="Evenimente, locuri și oameni din Valea Jiului, într-un singur loc.">
+  <meta property="og:image" content="images/parang-creasta.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
+  <a class="skip" href="#rails">Sari la conținut</a>
+
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="NEST acasă">
+    <a class="brand" href="#top" aria-label="NEST, începutul paginii">
       <span class="brand-mark">N</span><span>NEST</span>
     </a>
-    <nav class="main-nav" aria-label="Navigare principală">
-      <a class="active" href="#explore">Descoperă</a>
-      <a href="#events">Evenimente</a>
-      <a href="#community">Comunitate</a>
-      <a href="#how">Cum funcționează</a>
+    <nav class="main-nav" id="main-nav" aria-label="Navigare principală">
+      <a href="#rails">Descoperă</a>
+      <a href="#rail-events">Evenimente</a>
+      <a href="#rail-places">Locuri</a>
+      <a href="#rail-listings">Anunțuri</a>
+      <a href="#utile">Utile</a>
     </nav>
-    <button class="host-link" data-open-modal="publish-modal">Publică un anunț</button>
-    <button class="menu-button" aria-label="Deschide meniul" aria-expanded="false">☰</button>
+    <div class="header-actions">
+      <a class="mylist-link" href="#rail-mylist" data-mylist-link hidden>Lista mea <span data-mylist-count>0</span></a>
+      <button class="host-link" type="button" data-open-publish>Publică un anunț</button>
+      <button class="menu-button" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="main-nav">☰</button>
+    </div>
   </header>
 
-  <div class="live-bar"><span class="live-pulse"></span><strong>Valea Jiului, live</strong><span>Ce se întâmplă azi, ce urmează mâine, cine are nevoie de tine.</span><a href="#events">Vezi acum</a></div>
-
   <main id="top">
-    <section class="hero" id="explore">
-      <div class="hero-copy">
-        <p class="hero-kicker">Azi în Valea Jiului</p>
-        <h1>Găsește ce ai nevoie azi.</h1>
-        <p class="hero-text">Locuri, oameni, servicii și evenimente. Tot ce se întâmplă în Petroșani, Lupeni, Vulcan și împrejurimi, într-un singur loc.</p>
-        <div class="hero-actions"><a class="hero-cta" href="#community">Descoperă acum</a><a class="hero-secondary" href="#events">Vezi evenimentele</a></div>
-        <div class="hero-proof" aria-label="Ce găsești pe NEST"><span><strong>Nou</strong> anunț de chirie</span><span><strong>4</strong> evenimente vii</span><span><strong>100%</strong> local</span></div>
-      </div>
-      <div class="hero-art">
-        <div class="hero-image"><img src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=1200&q=90" alt="Munții Parang la asfințit, deasupra Văii Jiului"></div>
-        <div class="hero-caption"><span class="location-pin">⌖</span><span><strong>Valea Jiului</strong><br>Hunedoara, România</span></div>
-      </div>
-    </section>
-
-    <section class="search-panel" aria-label="Caută în Valea Jiului">
-      <div class="search-field"><span class="field-icon">⌖</span><div><label>Unde?</label><input id="location-input" type="text" placeholder="Petroșani, Lupeni..."></div></div>
-      <div class="search-field"><span class="field-icon">◉</span><div><label>Ce ai nevoie?</label><button class="fake-input" data-toast="Alege o categorie din filtrele de mai jos.">Orice anunț</button></div></div>
-      <div class="search-field"><span class="field-icon">♧</span><div><label>Vrei să oferi sau să găsești?</label><button class="fake-input" data-toast="Poți căuta ce oferă sau ce caută oamenii.">Ofer sau caut</button></div></div>
-      <button class="search-button" id="search-button" aria-label="Caută în anunțuri">Caută acum</button>
-    </section>
-
-    <section class="category-rail" aria-label="Categorii NEST">
-      <div class="category-intro"><h2>Ce cauți azi?</h2></div>
-      <div class="category-list" role="group" aria-label="Alege o categorie"><button class="category-filter active" data-category-filter="all"><span>✦</span><strong>Toate</strong><small>Comunitatea</small></button><button class="category-filter" data-category-filter="housing"><span>⌂</span><strong>Chirii &amp; locuințe</strong><small>Case, apartamente, cabane</small></button><button class="category-filter" data-category-filter="products"><span>▣</span><strong>Produse</strong><small>Vânzări și anunțuri</small></button><button class="category-filter" data-category-filter="services"><span>⚒</span><strong>Servicii locale</strong><small>Oferte și cereri</small></button><button class="category-filter" data-category-filter="events"><span>✦</span><strong>Evenimente</strong><small>Ce urmează în Vale</small></button><button class="category-filter" data-category-filter="jobs"><span>↗</span><strong>Joburi</strong><small>Lucru și colaborări</small></button><button class="category-filter" data-category-filter="cars"><span>◉</span><strong>Mașini</strong><small>Auto, moto și piese</small></button><button class="category-filter" data-category-filter="people"><span>◎</span><strong>Persoane &amp; firme</strong><small>Cine oferă, cine caută</small></button></div>
-    </section>
-
-    <section class="discover-section" id="community">
-      <div class="section-heading"><h2>Vezi ce se întâmplă aici.</h2><div class="heading-side"><p>De la un apartament în Petroșani la un instalator bun în Uricani. Anunțuri reale, direct de la oameni.</p><a href="#listings">Vezi toate anunțurile</a></div></div>
-      <div class="listing-grid" id="listings">
-        <article class="listing-card listing-featured" data-category="offer stay housing">
-          <div class="listing-gallery">
-            <div class="gallery-main"><img src="images/living.jpeg" alt="Living, apartament 2 camere de închiriat în Petroșani"></div>
-            <div class="gallery-thumbs">
-              <img src="images/dormitor.jpeg" alt="Dormitor, apartament 2 camere de închiriat în Petroșani">
-              <img src="images/bucatarie.jpeg" alt="Bucătărie, apartament 2 camere de închiriat în Petroșani">
-              <img src="images/baie.jpeg" alt="Baie, apartament 2 camere de închiriat în Petroșani">
-            </div>
-            <button class="heart" aria-label="Adaugă la favorite">♡</button>
-            <span class="tag">Se oferă</span>
-          </div>
-          <div class="card-info"><div><h3>Apartament 2 camere de închiriat</h3><p>Petroșani · 2 camere · mobilat</p></div><strong>200 € <small>/ lună</small></strong></div>
-          <div class="rating">★ Nou <span>·</span> disponibil acum</div>
-        </article>
+    <!-- Billboard -->
+    <section class="billboard" aria-roledescription="carusel" aria-label="Recomandate în Valea Jiului" data-billboard>
+      <div class="bb-slides" data-bb-slides></div>
+      <div class="bb-shade" aria-hidden="true"></div>
+      <svg class="bb-mountains" viewBox="0 0 1600 260" preserveAspectRatio="none" aria-hidden="true">
+        <path class="mtn mtn-far" data-depth="0.12" d="M0 83 C22 80 89 66 133 65 C178 64 222 70 267 77 C311 83 356 100 400 104 C444 109 489 105 533 104 C578 102 622 97 667 95 C711 93 756 92 800 92 C844 92 889 97 933 95 C978 94 1022 87 1067 83 C1111 80 1156 81 1200 75 C1244 69 1289 50 1333 47 C1378 44 1422 51 1467 58 C1511 66 1578 86 1600 92 V260 H0Z"/>
+        <path class="mtn mtn-mid" data-depth="0.24" d="M0 157 C27 157 107 161 160 158 C213 155 267 141 320 137 C373 133 427 132 480 135 C533 139 587 156 640 157 C693 157 747 137 800 136 C853 136 907 152 960 153 C1013 154 1067 146 1120 143 C1173 140 1227 134 1280 136 C1333 138 1387 153 1440 155 C1493 157 1573 150 1600 149 V260 H0Z"/>
+        <path class="mtn mtn-near" data-depth="0.4" d="M0 190 C33 188 133 180 200 182 C267 184 333 199 400 203 C467 206 533 204 600 205 C667 207 733 212 800 210 C867 208 933 196 1000 192 C1067 188 1133 186 1200 187 C1267 187 1333 193 1400 194 C1467 196 1567 195 1600 195 V260 H0Z"/>
+      </svg>
+      <div class="bb-content" data-bb-content aria-live="polite"></div>
+      <div class="bb-controls">
+        <button type="button" class="bb-pause" data-bb-pause aria-label="Oprește derularea">❚❚</button>
+        <div class="bb-progress" data-bb-progress role="tablist" aria-label="Alege recomandarea"></div>
       </div>
     </section>
 
-    <section class="events-section" id="events">
-      <div class="section-heading"><h2>Ce se întâmplă?</h2><div class="heading-side"><p>De la mașini și muzică până la zilele orașului. Află ce urmează și păstrează ce ai trăit.</p><button class="text-action" data-toast="Poți propune un eveniment din butonul de mai jos.">Propune un eveniment</button></div></div>
-      <div class="event-tabs" role="group" aria-label="Filtrează evenimentele">
-        <button class="event-tab active" data-event-filter="live"><span class="tab-dot dot-live"></span>Active acum</button>
-        <button class="event-tab" data-event-filter="upcoming"><span class="tab-dot dot-upcoming"></span>Viitoare</button>
-        <button class="event-tab" data-event-filter="archive"><span class="tab-dot dot-archive"></span>Încheiate</button>
-      </div>
-      <div class="event-grid">
-        <article class="event-card" data-event-type="live"><div class="event-date event-date-live"><span class="live-dot"></span><strong>Acum</strong></div><div class="event-visual visual-car"><span>Car meet</span><small>Parcarea Livezeni · Petroșani</small></div><div class="event-copy"><span class="event-kind">Comunitate auto</span><h3>Valea Jiului Car Meet</h3><p>Mașini, muzică și oameni care iubesc drumurile din Vale.</p><div class="event-meta"><span>◷ 18:00</span><span>♡ 84 merg</span></div></div></article>
-        <article class="event-card" data-event-type="upcoming"><div class="event-date"><strong>29</strong><span>iun</span></div><div class="event-visual visual-party"><span>Drum &amp; bass</span><small>Underground Hall · Vulcan</small></div><div class="event-copy"><span class="event-kind">Muzică live</span><h3>Night Shift: DNB Party</h3><p>O noapte cu bass, prieteni și energie bună până dimineață.</p><div class="event-meta"><span>◷ 22:00</span><span>18+ · bilete</span></div></div></article>
-        <article class="event-card" data-event-type="upcoming"><div class="event-date"><strong>12</strong><span>iul</span></div><div class="event-visual visual-city"><span>Zilele orașului</span><small>Parcul Central · Lupeni</small></div><div class="event-copy"><span class="event-kind">Pentru toți</span><h3>Zilele Lupeniului</h3><p>Târg local, concerte, activități pentru copii și gust de sărbătoare.</p><div class="event-meta"><span>◷ 10:00</span><span>intrare liberă</span></div></div></article>
-        <article class="event-card archived" data-event-type="archive"><div class="event-date"><strong>18</strong><span>mai</span></div><div class="event-visual visual-hike"><span>Trail day</span><small>Pasul Vâlcan</small></div><div class="event-copy"><span class="event-kind">Din arhivă</span><h3>O zi pe traseu</h3><p>„Organizare bună și oameni faini. Mai venim.”</p><div class="event-meta"><span>★ 4.8 / 5</span><span>26 fotografii</span></div></div></article>
-      </div>
-      <div class="event-actions"><button class="outline-light" data-toast="Propunerea ta de eveniment poate fi adăugată curând.">+ Propune un eveniment</button><button class="upload-button" id="upload-button">＋ Adaugă poze dintr-un eveniment</button><input id="photo-upload" type="file" accept="image/*" multiple hidden></div>
+    <!-- Search dock -->
+    <section class="search-dock" aria-label="Caută în Valea Jiului">
+      <form class="search-form" data-search role="search">
+        <div class="sf-field">
+          <label for="sf-town">Unde</label>
+          <select id="sf-town" name="town" data-town-select></select>
+        </div>
+        <div class="sf-field">
+          <label for="sf-kind">Ce</label>
+          <select id="sf-kind" name="kind">
+            <option value="all">Orice</option>
+            <option value="event">Evenimente</option>
+            <option value="place">Locuri de văzut</option>
+            <option value="trip">Excursii de o zi</option>
+            <option value="listing">Anunțuri</option>
+          </select>
+        </div>
+        <div class="sf-field sf-text">
+          <label for="sf-q">Caută</label>
+          <input id="sf-q" name="q" type="search" placeholder="Parâng, chirie, concert…" autocomplete="off">
+        </div>
+        <button class="sf-reset" type="reset" data-search-reset hidden>Șterge filtrele</button>
+      </form>
+      <p class="search-status" data-search-status aria-live="polite"></p>
     </section>
 
-    <section class="archive-section" aria-labelledby="archive-title">
-      <div class="archive-intro">
-        <h2 id="archive-title">Un eveniment bun rămâne prin oamenii care au fost acolo.</h2>
-        <p>Lasă o părere, o fotografie sau un moment pe care vrei să-l ții minte. Fără recenzii inventate — doar experiențe trimise de comunitate, după fiecare eveniment.</p>
-        <button class="coral-button" data-toast="Arhiva va putea primi povestea ta după eveniment.">Lasă o impresie</button>
+    <!-- Live strip -->
+    <section class="live-strip" aria-label="Acum în Valea Jiului">
+      <div class="live-item"><span class="live-pulse" aria-hidden="true"></span><strong data-today>Azi</strong></div>
+      <div class="live-item" data-weather hidden></div>
+      <div class="live-item" data-week-count></div>
+    </section>
+
+    <!-- Rails -->
+    <div class="rails" id="rails" data-rails></div>
+    <p class="empty-state" data-empty hidden>Nu am găsit nimic pentru căutarea ta. Încearcă alt oraș sau alt cuvânt.</p>
+
+    <!-- Valley in numbers -->
+    <section class="valley" aria-labelledby="valley-title">
+      <div class="valley-media" aria-hidden="true"><img src="images/parang-creasta.jpg" alt="" loading="lazy" width="2000" height="1333"></div>
+      <div class="valley-inner">
+        <h2 id="valley-title">O vale, șase orașe, un singur loc unde afli tot.</h2>
+        <dl class="valley-facts">
+          <div><dt>Orașe</dt><dd>6</dd><p>Petroșani, Petrila, Aninoasa, Vulcan, Lupeni, Uricani</p></div>
+          <div><dt>De la Petrila la Uricani</dt><dd>~35 km</dd><p>pe drumul care urmează Jiul</p></div>
+          <div><dt>Cel mai înalt vârf</dt><dd>2.519 m</dd><p>Parângu Mare, deasupra Petroșaniului</p></div>
+        </dl>
       </div>
     </section>
 
-    <section class="notice-strip"><div><h2>Ai observat ceva important?</h2></div><div><p>Pe viitor, NEST poate găzdui și sesizări ale locuitorilor, într-un spațiu clar și transparent. Deocamdată strângem idei, nu promitem un canal oficial.</p><button class="text-action" data-toast="Am notat ideea. Zona de sesizări va fi gândită cu grijă împreună cu comunitatea.">Spune-ne ce ai avea nevoie</button></div></section>
+    <!-- Useful -->
+    <section class="utile" id="utile" aria-labelledby="utile-title">
+      <div class="section-heading">
+        <h2 id="utile-title">Lucrurile care te ajută</h2>
+        <p>Numere și locuri de care ai nevoie repede. Apasă și deschizi direct telefonul sau harta.</p>
+      </div>
+      <div class="utile-grid">
+        <a class="utile-card utile-urgent" href="tel:112"><span class="u-icon" aria-hidden="true">✚</span><strong>Urgențe</strong><small>Sună la 112</small></a>
+        <a class="utile-card" href="tel:0725826668"><span class="u-icon" aria-hidden="true">▲</span><strong>Salvamont</strong><small>0SALVAMONT · 0725 826 668</small></a>
+        <a class="utile-card" href="https://www.google.com/maps/search/?api=1&query=Autogara+Petro%C8%99ani" target="_blank" rel="noopener"><span class="u-icon" aria-hidden="true">↗</span><strong>Autogara Petroșani</strong><small>Vezi pe hartă</small></a>
+        <a class="utile-card" href="https://www.google.com/maps/search/?api=1&query=Gara+Petro%C8%99ani" target="_blank" rel="noopener"><span class="u-icon" aria-hidden="true">═</span><strong>Gara Petroșani</strong><small>Vezi pe hartă</small></a>
+        <a class="utile-card" href="https://www.google.com/maps/search/?api=1&query=Prim%C4%83ria+Municipiului+Petro%C8%99ani" target="_blank" rel="noopener"><span class="u-icon" aria-hidden="true">⌂</span><strong>Primăria Petroșani</strong><small>Vezi pe hartă</small></a>
+        <a class="utile-card" href="https://www.google.com/maps/search/?api=1&query=Spitalul+de+Urgen%C8%9B%C4%83+Petro%C8%99ani" target="_blank" rel="noopener"><span class="u-icon" aria-hidden="true">✚</span><strong>Spitalul de Urgență</strong><small>Vezi pe hartă</small></a>
+      </div>
+    </section>
 
-    <section class="toolkit-section"><div class="toolkit-heading"><h2>Lucrurile care te ajută.</h2><p>Intrări rapide pentru informații utile, puse la un loc pentru viața de zi cu zi.</p></div><div class="toolkit-grid"><button class="tool-card" data-toast="Transportul Green Line și legăturile spre Parâng vor apărea aici."><span>↗</span><strong>Ajungi acolo</strong><small>Transport &amp; Green Line</small></button><button class="tool-card" data-toast="Descoperă trasee, Parâng și locuri de ieșit în natură."><span>▲</span><strong>Urcă mai sus</strong><small>Parâng &amp; trasee</small></button><button class="tool-card" data-toast="Formulare, taxe și informații administrative, explicate simplu."><span>＋</span><strong>Rezolvă rapid</strong><small>Formulare &amp; taxe</small></button><button class="tool-card" data-toast="Muzeul Mineritului, teatru, biblioteca și istoria locului."><span>◎</span><strong>Cunoaște Valea</strong><small>Cultură &amp; istorie</small></button></div></section>
-
-    <section class="how-section" id="how"><div class="how-copy"><h2>Tu aduci ideea.</h2><p>Publică gratuit ce ai de oferit sau ce cauți. Oamenii potriviți din Vale te pot găsi direct.</p><button class="outline-button" data-open-modal="publish-modal">Publică un anunț</button></div><div class="steps"><div class="step"><span>01</span><h3>Spune ce oferi</h3><p>O casă, o cabană, un serviciu sau o abilitate.</p></div><div class="step"><span>02</span><h3>Spune ce cauți</h3><p>Un loc, un om de încredere sau un ajutor local.</p></div><div class="step"><span>03</span><h3>Conectează-te</h3><p>Discuți direct, fără intermediari complicați.</p></div></div></section>
+    <!-- Community -->
+    <section class="community" id="how" aria-labelledby="how-title">
+      <div class="community-copy">
+        <h2 id="how-title">Tu aduci ideea.</h2>
+        <p>Ai o cameră de închiriat, un eveniment, un serviciu bun? Spune-ne și îl punem în fața oamenilor din Vale.</p>
+        <button class="lamp-button" type="button" data-open-publish>Publică un anunț</button>
+      </div>
+      <ol class="steps">
+        <li><h3>Spui ce oferi sau ce cauți</h3><p>O casă, o cabană, un serviciu, un eveniment.</p></li>
+        <li><h3>Îl verificăm și îl publicăm</h3><p>Fără anunțuri false și fără recenzii inventate.</p></li>
+        <li><h3>Oamenii te găsesc direct</h3><p>Fără intermediari complicați.</p></li>
+      </ol>
+    </section>
   </main>
 
-  <footer><a class="brand" href="#top"><span class="brand-mark">N</span><span>NEST</span></a><p>Valea Jiului, locul unde ne găsim unii pe alții.</p><span>© 2024 NEST</span></footer>
-  <div class="modal-backdrop" id="publish-modal" hidden><div class="publish-modal" role="dialog" aria-modal="true" aria-labelledby="publish-title"><button class="modal-close" aria-label="Închide">×</button><h2 id="publish-title">Ce vrei să spui?</h2><p class="modal-intro">Alege tipul de anunț. Îl completăm împreună în pasul următor.</p><div class="publish-choices"><button data-publish-choice="offer"><span>↗</span><strong>Ofer ceva</strong><small>Locuință, cabană sau serviciu</small></button><button data-publish-choice="wanted"><span>⌕</span><strong>Caut ceva</strong><small>Loc, om sau ajutor local</small></button></div><p class="modal-note">Fără cont acum. Doar o primă schiță a ideii tale.</p></div></div>
+  <footer class="site-footer">
+    <a class="brand" href="#top"><span class="brand-mark">N</span><span>NEST</span></a>
+    <p>Valea Jiului, locul unde ne găsim unii pe alții.</p>
+    <p class="footer-note">Evenimentele marcate „Exemplu” arată cum va arăta calendarul. Unele fotografii sunt ilustrative. Vremea: Open-Meteo.</p>
+    <span>© <span data-year>2026</span> NEST</span>
+  </footer>
+
+  <!-- Detail modal (streaming-style title page) -->
+  <dialog class="detail" id="detail" aria-labelledby="detail-title">
+    <div class="detail-hero">
+      <img id="detail-img" src="" alt="">
+      <button type="button" class="detail-close" data-detail-close aria-label="Închide">×</button>
+      <div class="detail-head">
+        <p class="detail-kicker" id="detail-kicker"></p>
+        <h2 id="detail-title"></h2>
+        <div class="detail-actions">
+          <button type="button" class="lamp-button" data-detail-save>+ Lista mea</button>
+          <a class="ghost-button" data-detail-map target="_blank" rel="noopener">Deschide în Google Maps</a>
+          <button type="button" class="ghost-button" data-detail-share>Distribuie</button>
+        </div>
+      </div>
+    </div>
+    <div class="detail-body">
+      <ul class="detail-meta" id="detail-meta"></ul>
+      <p class="detail-text" id="detail-text"></p>
+      <div class="detail-gallery" id="detail-gallery"></div>
+      <h3 class="detail-more-title">Mai multe ca acesta</h3>
+      <div class="detail-more" id="detail-more"></div>
+    </div>
+  </dialog>
+
+  <!-- Publish -->
+  <dialog class="publish" id="publish" aria-labelledby="publish-title">
+    <button type="button" class="detail-close" data-publish-close aria-label="Închide">×</button>
+    <h2 id="publish-title">Ce vrei să spui?</h2>
+    <p class="modal-intro">Alege tipul de anunț. Publicarea directă pe site vine curând; până atunci pregătim anunțul împreună.</p>
+    <div class="publish-choices">
+      <button type="button" data-publish-choice="Ofer"><span aria-hidden="true">↗</span><strong>Ofer ceva</strong><small>Locuință, cabană, serviciu</small></button>
+      <button type="button" data-publish-choice="Caut"><span aria-hidden="true">⌕</span><strong>Caut ceva</strong><small>Loc, om sau ajutor local</small></button>
+      <button type="button" data-publish-choice="Eveniment"><span aria-hidden="true">✦</span><strong>Am un eveniment</strong><small>Concert, târg, ieșire</small></button>
+    </div>
+  </dialog>
+
   <div class="toast" id="toast" role="status"></div>
-  <script src="script.js"></script>
+  <script src="script.js?v=4" defer></script>
 </body>
 </html>
