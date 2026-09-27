@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEST Valea Jiului | Ce se întâmplă în Vale, azi</title>
+  <title>NEST Valea Jiului | Valea Jiului, azi</title>
   <meta name="description" content="NEST Valea Jiului: evenimente, locuri de văzut, anunțuri și informații utile din Petroșani, Petrila, Aninoasa, Vulcan, Lupeni și Uricani.">
   <meta name="theme-color" content="#17211c">
   <meta property="og:title" content="NEST Valea Jiului">
@@ -13,86 +13,117 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
-  <a class="skip" href="#rails">Sari la conținut</a>
+  <a class="skip" href="#agenda">Sari la conținut</a>
 
   <header class="site-header">
     <a class="brand" href="#top" aria-label="NEST, începutul paginii">
       <span class="brand-mark">N</span><span>NEST</span>
     </a>
     <nav class="main-nav" id="main-nav" aria-label="Navigare principală">
-      <a href="#rails">Descoperă</a>
-      <a href="#rail-events">Evenimente</a>
-      <a href="#rail-places">Locuri</a>
-      <a href="#rail-listings">Anunțuri</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#locuri">Locuri</a>
+      <a href="#excursii">Excursii</a>
+      <a href="#anunturi">Anunțuri</a>
       <a href="#utile">Utile</a>
     </nav>
     <div class="header-actions">
-      <a class="mylist-link" href="#rail-mylist" data-mylist-link hidden>Lista mea <span data-mylist-count>0</span></a>
       <button class="host-link" type="button" data-open-publish>Publică un anunț</button>
       <button class="menu-button" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="main-nav">☰</button>
     </div>
   </header>
 
   <main id="top">
-    <!-- Billboard -->
-    <section class="billboard" aria-roledescription="carusel" aria-label="Recomandate în Valea Jiului" data-billboard>
-      <div class="bb-slides" data-bb-slides></div>
-      <div class="bb-shade" aria-hidden="true"></div>
-      <svg class="bb-mountains" viewBox="0 0 1600 260" preserveAspectRatio="none" aria-hidden="true">
+    <!-- Today in the valley -->
+    <section class="today" aria-labelledby="today-title">
+      <div class="today-media" aria-hidden="true">
+        <img src="images/parang-creasta.jpg" alt="" fetchpriority="high" width="2000" height="1333">
+      </div>
+      <svg class="today-mountains" viewBox="0 0 1600 260" preserveAspectRatio="none" aria-hidden="true">
         <path class="mtn mtn-far" data-depth="0.12" d="M0 83 C22 80 89 66 133 65 C178 64 222 70 267 77 C311 83 356 100 400 104 C444 109 489 105 533 104 C578 102 622 97 667 95 C711 93 756 92 800 92 C844 92 889 97 933 95 C978 94 1022 87 1067 83 C1111 80 1156 81 1200 75 C1244 69 1289 50 1333 47 C1378 44 1422 51 1467 58 C1511 66 1578 86 1600 92 V260 H0Z"/>
         <path class="mtn mtn-mid" data-depth="0.24" d="M0 157 C27 157 107 161 160 158 C213 155 267 141 320 137 C373 133 427 132 480 135 C533 139 587 156 640 157 C693 157 747 137 800 136 C853 136 907 152 960 153 C1013 154 1067 146 1120 143 C1173 140 1227 134 1280 136 C1333 138 1387 153 1440 155 C1493 157 1573 150 1600 149 V260 H0Z"/>
         <path class="mtn mtn-near" data-depth="0.4" d="M0 190 C33 188 133 180 200 182 C267 184 333 199 400 203 C467 206 533 204 600 205 C667 207 733 212 800 210 C867 208 933 196 1000 192 C1067 188 1133 186 1200 187 C1267 187 1333 193 1400 194 C1467 196 1567 195 1600 195 V260 H0Z"/>
       </svg>
-      <div class="bb-content" data-bb-content aria-live="polite"></div>
-      <div class="bb-controls">
-        <button type="button" class="bb-pause" data-bb-pause aria-label="Oprește derularea">❚❚</button>
-        <div class="bb-progress" data-bb-progress role="tablist" aria-label="Alege recomandarea"></div>
+      <div class="today-inner">
+        <p class="today-date" data-today>Azi</p>
+        <h1 id="today-title">Valea Jiului, azi.</h1>
+        <p class="today-lead">Ce e de văzut, ce urmează și de ce ai nevoie, în Petroșani, Petrila, Aninoasa, Vulcan, Lupeni și Uricani.</p>
+
+        <div class="today-weather" data-weather aria-live="polite" hidden></div>
+
+        <form class="today-search" data-search role="search">
+          <label class="sr-only" for="q">Caută în Vale</label>
+          <input id="q" name="q" type="search" placeholder="Caută: Parâng, chirie, lac, castel…" autocomplete="off">
+          <div class="kind-chips" role="group" aria-label="Ce cauți">
+            <button type="button" class="kind" data-kind="all" aria-pressed="true">Tot</button>
+            <button type="button" class="kind" data-kind="event" aria-pressed="false">Agenda</button>
+            <button type="button" class="kind" data-kind="place" aria-pressed="false">Locuri</button>
+            <button type="button" class="kind" data-kind="trip" aria-pressed="false">Excursii</button>
+            <button type="button" class="kind" data-kind="listing" aria-pressed="false">Anunțuri</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- The valley, west to east: pick your town -->
+      <div class="valley-line" aria-label="Alege orașul">
+        <p class="valley-line-hint">De unde ești? Apasă pe oraș.</p>
+        <div class="valley-line-wrap">
+          <svg class="jiu" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+            <path id="jiu-path" d="M0 78 C 90 70, 160 52, 260 60 S 420 88, 520 70 S 640 44, 720 56 S 860 84, 940 62 S 990 50, 1000 54"/>
+          </svg>
+          <div class="towns" data-towns></div>
+        </div>
       </div>
     </section>
 
-    <!-- Search dock -->
-    <section class="search-dock" aria-label="Caută în Valea Jiului">
-      <form class="search-form" data-search role="search">
-        <div class="sf-field">
-          <label for="sf-town">Unde</label>
-          <select id="sf-town" name="town" data-town-select></select>
-        </div>
-        <div class="sf-field">
-          <label for="sf-kind">Ce</label>
-          <select id="sf-kind" name="kind">
-            <option value="all">Orice</option>
-            <option value="event">Evenimente</option>
-            <option value="place">Locuri de văzut</option>
-            <option value="trip">Excursii de o zi</option>
-            <option value="listing">Anunțuri</option>
-          </select>
-        </div>
-        <div class="sf-field sf-text">
-          <label for="sf-q">Caută</label>
-          <input id="sf-q" name="q" type="search" placeholder="Parâng, chirie, concert…" autocomplete="off">
-        </div>
-        <button class="sf-reset" type="reset" data-search-reset hidden>Șterge filtrele</button>
-      </form>
-      <p class="search-status" data-search-status aria-live="polite"></p>
+    <div class="filter-bar" data-filter-bar hidden>
+      <p><span data-filter-text></span> <button type="button" data-filter-clear>Arată toată Valea ×</button></p>
+    </div>
+
+    <!-- Agenda -->
+    <section class="block" id="agenda" aria-labelledby="agenda-title">
+      <div class="block-head">
+        <h2 id="agenda-title">Agenda Văii</h2>
+        <p>Evenimentele le trimit oamenii din Vale. Până se umple calendarul, cele marcate „Exemplu” îți arată cum va arăta.</p>
+      </div>
+      <ol class="agenda" data-agenda></ol>
+      <button type="button" class="lamp-button" data-open-publish>Propune un eveniment</button>
     </section>
 
-    <!-- Live strip -->
-    <section class="live-strip" aria-label="Acum în Valea Jiului">
-      <div class="live-item"><span class="live-pulse" aria-hidden="true"></span><strong data-today>Azi</strong></div>
-      <div class="live-item" data-weather hidden></div>
-      <div class="live-item" data-week-count></div>
+    <!-- Places -->
+    <section class="block" id="locuri" aria-labelledby="locuri-title">
+      <div class="block-head">
+        <h2 id="locuri-title">Locuri de văzut</h2>
+        <p>Munte, lacuri, istorie. Locuri reale, la câțiva kilometri de casă.</p>
+      </div>
+      <div class="places" data-places></div>
     </section>
 
-    <!-- Rails -->
-    <div class="rails" id="rails" data-rails></div>
-    <p class="empty-state" data-empty hidden>Nu am găsit nimic pentru căutarea ta. Încearcă alt oraș sau alt cuvânt.</p>
+    <!-- Trips -->
+    <section class="block" id="excursii" aria-labelledby="excursii-title">
+      <div class="block-head">
+        <h2 id="excursii-title">Excursii de o zi</h2>
+        <p>Pleci dimineața, te întorci seara.</p>
+      </div>
+      <div class="trips" data-trips></div>
+    </section>
+
+    <!-- Listings -->
+    <section class="block" id="anunturi" aria-labelledby="anunturi-title">
+      <div class="block-head">
+        <h2 id="anunturi-title">Anunțuri</h2>
+        <p>De la oameni din Vale, direct. Fără intermediari.</p>
+      </div>
+      <div class="listings" data-listings></div>
+    </section>
+
+    <p class="empty-state" data-empty hidden>Nu am găsit nimic. Încearcă alt oraș sau alt cuvânt.</p>
 
     <!-- Valley in numbers -->
     <section class="valley" aria-labelledby="valley-title">
-      <div class="valley-media" aria-hidden="true"><img src="images/parang-creasta.jpg" alt="" loading="lazy" width="2000" height="1333"></div>
+      <div class="valley-media" aria-hidden="true"><img src="images/parang-vale.jpg" alt="" loading="lazy" width="1400" height="933"></div>
       <div class="valley-inner">
         <h2 id="valley-title">O vale, șase orașe, un singur loc unde afli tot.</h2>
         <dl class="valley-facts">
@@ -105,7 +136,7 @@
 
     <!-- Useful -->
     <section class="utile" id="utile" aria-labelledby="utile-title">
-      <div class="section-heading">
+      <div class="block-head">
         <h2 id="utile-title">Lucrurile care te ajută</h2>
         <p>Numere și locuri de care ai nevoie repede. Apasă și deschizi direct telefonul sau harta.</p>
       </div>
@@ -137,31 +168,28 @@
   <footer class="site-footer">
     <a class="brand" href="#top"><span class="brand-mark">N</span><span>NEST</span></a>
     <p>Valea Jiului, locul unde ne găsim unii pe alții.</p>
-    <p class="footer-note">Evenimentele marcate „Exemplu” arată cum va arăta calendarul. Unele fotografii sunt ilustrative. Vremea: Open-Meteo.</p>
+    <p class="footer-note">Evenimentele marcate „Exemplu” arată cum va arăta agenda. Unele fotografii sunt ilustrative. Vremea: Open-Meteo.</p>
     <span>© <span data-year>2026</span> NEST</span>
   </footer>
 
-  <!-- Detail modal (streaming-style title page) -->
+  <!-- Detail -->
   <dialog class="detail" id="detail" aria-labelledby="detail-title">
     <div class="detail-hero">
       <img id="detail-img" src="" alt="">
       <button type="button" class="detail-close" data-detail-close aria-label="Închide">×</button>
-      <div class="detail-head">
-        <p class="detail-kicker" id="detail-kicker"></p>
-        <h2 id="detail-title"></h2>
-        <div class="detail-actions">
-          <button type="button" class="lamp-button" data-detail-save>+ Lista mea</button>
-          <a class="ghost-button" data-detail-map target="_blank" rel="noopener">Deschide în Google Maps</a>
-          <button type="button" class="ghost-button" data-detail-share>Distribuie</button>
-        </div>
-      </div>
     </div>
     <div class="detail-body">
+      <p class="detail-kicker" id="detail-kicker"></p>
+      <h2 id="detail-title"></h2>
       <ul class="detail-meta" id="detail-meta"></ul>
       <p class="detail-text" id="detail-text"></p>
+      <div class="detail-actions">
+        <a class="lamp-button" data-detail-map target="_blank" rel="noopener">Deschide în Google Maps</a>
+        <button type="button" class="ghost-button" data-detail-share>Trimite unui prieten</button>
+      </div>
       <div class="detail-gallery" id="detail-gallery"></div>
-      <h3 class="detail-more-title">Mai multe ca acesta</h3>
-      <div class="detail-more" id="detail-more"></div>
+      <h3 class="detail-more-title" id="detail-more-title"></h3>
+      <ul class="detail-more" id="detail-more"></ul>
     </div>
   </dialog>
 
@@ -178,6 +206,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="script.js?v=4" defer></script>
+  <script src="script.js?v=5" defer></script>
 </body>
 </html>
