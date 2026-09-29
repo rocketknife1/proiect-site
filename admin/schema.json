@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "name": "NEST Valea Jiului",
+  "liveUrl": "https://rocketknife1.github.io/proiect-site/",
+  "imageDir": "images",
+  "files": [
+    {
+      "path": "content.json",
+      "sections": [
+        {
+          "key": "items",
+          "label": "Locuri, excursii, anunțuri și evenimente",
+          "description": "Tot ce apare în agendă, la locuri, excursii și anunțuri.",
+          "type": "list",
+          "itemTitle": "title",
+          "itemSubtitle": "kind",
+          "fields": [
+            { "key": "kind", "label": "Ce este", "type": "select", "required": true, "options": [
+              { "value": "event", "label": "Eveniment (agenda)" },
+              { "value": "place", "label": "Loc de văzut" },
+              { "value": "trip", "label": "Excursie de o zi" },
+              { "value": "listing", "label": "Anunț" }
+            ] },
+            { "key": "title", "label": "Titlu", "type": "text", "required": true },
+            { "key": "id", "label": "Cod pentru link (fără spații, ex. parang)", "type": "slug", "from": "title", "required": true },
+            { "key": "town", "label": "Oraș", "type": "select", "required": true, "allowCustom": true, "options": [
+              { "value": "Petroșani" }, { "value": "Petrila" }, { "value": "Aninoasa" },
+              { "value": "Vulcan" }, { "value": "Lupeni" }, { "value": "Uricani" }, { "value": "Hunedoara" }
+            ] },
+            { "key": "kicker", "label": "Etichetă scurtă deasupra titlului", "type": "text" },
+            { "key": "text", "label": "Descriere", "type": "longtext", "required": true },
+            { "key": "img", "label": "Poza principală", "type": "image" },
+            { "key": "icon", "label": "Simbol afișat când nu e poză", "type": "text", "showIf": { "key": "img", "empty": true } },
+            { "key": "gallery", "label": "Alte poze (în pagina de detalii)", "type": "imageList" },
+            { "key": "tags", "label": "Etichete", "type": "stringList" },
+            { "key": "price", "label": "Preț (ex. 200 € / lună)", "type": "text", "showIf": { "key": "kind", "equals": "listing" } },
+            { "key": "date", "label": "Data", "type": "date", "showIf": { "key": "kind", "equals": "event" } },
+            { "key": "time", "label": "Ora", "type": "time", "showIf": { "key": "kind", "equals": "event" } },
+            { "key": "where", "label": "Locul exact", "type": "text", "showIf": { "key": "kind", "equals": "event" } },
+            { "key": "example", "label": "E doar un exemplu (apare marcat „Exemplu”)", "type": "bool", "showIf": { "key": "kind", "equals": "event" } },
+            { "key": "map", "label": "Ce se caută în Google Maps", "type": "text" }
+          ],
+          "newItem": { "kind": "place", "title": "", "id": "", "town": "Petroșani", "kicker": "", "text": "", "img": null, "tags": [] }
+        },
+        {
+          "key": "texts",
+          "label": "Texte de pe pagină",
+          "description": "Titlurile și paragrafele secțiunilor.",
+          "type": "group",
+          "fields": [
+            { "key": "hero.title", "label": "Titlul mare de sus", "type": "text" },
+            { "key": "hero.lead", "label": "Textul de sub titlul mare", "type": "longtext" },
+            { "key": "agenda.title", "label": "Agenda — titlu", "type": "text" },
+            { "key": "agenda.intro", "label": "Agenda — text", "type": "longtext" },
+            { "key": "places.title", "label": "Locuri — titlu", "type": "text" },
+            { "key": "places.intro", "label": "Locuri — text", "type": "longtext" },
+            { "key": "trips.title", "label": "Excursii — titlu", "type": "text" },
+            { "key": "trips.intro", "label": "Excursii — text", "type": "longtext" },
+            { "key": "listings.title", "label": "Anunțuri — titlu", "type": "text" },
+            { "key": "listings.intro", "label": "Anunțuri — text", "type": "longtext" },
+            { "key": "valley.title", "label": "„O vale, șase orașe” — titlu", "type": "text" },
+            { "key": "utile.title", "label": "Utile — titlu", "type": "text" },
+            { "key": "utile.intro", "label": "Utile — text", "type": "longtext" },
+            { "key": "community.title", "label": "„Tu aduci ideea” — titlu", "type": "text" },
+            { "key": "community.text", "label": "„Tu aduci ideea” — text", "type": "longtext" },
+            { "key": "footer.tagline", "label": "Subsol — motto", "type": "text" },
+            { "key": "footer.note", "label": "Subsol — notă", "type": "longtext" }
+          ]
+        },
+        {
+          "key": "utile",
+          "label": "Numere și locuri utile",
+          "type": "list",
+          "itemTitle": "title",
+          "itemSubtitle": "subtitle",
+          "fields": [
+            { "key": "title", "label": "Nume", "type": "text", "required": true },
+            { "key": "subtitle", "label": "Text mic dedesubt", "type": "text" },
+            { "key": "href", "label": "Link (tel:07… pentru telefon sau adresă web)", "type": "text", "required": true },
+            { "key": "icon", "label": "Simbol", "type": "text" },
+            { "key": "urgent", "label": "Evidențiat ca urgență (roșu)", "type": "bool" }
+          ],
+          "newItem": { "icon": "↗", "title": "", "subtitle": "Vezi pe hartă", "href": "" }
+        },
+        {
+          "key": "facts",
+          "label": "Cifrele Văii",
+          "type": "list",
+          "itemTitle": "label",
+          "itemSubtitle": "value",
+          "fields": [
+            { "key": "label", "label": "Ce măsori", "type": "text", "required": true },
+            { "key": "value", "label": "Cifra", "type": "text", "required": true },
+            { "key": "note", "label": "Explicație", "type": "text" }
+          ],
+          "newItem": { "label": "", "value": "", "note": "" }
+        },
+        {
+          "key": "steps",
+          "label": "Pașii „Tu aduci ideea”",
+          "type": "list",
+          "itemTitle": "title",
+          "fields": [
+            { "key": "title", "label": "Pas", "type": "text", "required": true },
+            { "key": "text", "label": "Explicație", "type": "text" }
+          ],
+          "newItem": { "title": "", "text": "" }
+        }
+      ]
+    }
+  ]
+}

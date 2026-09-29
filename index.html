@@ -48,8 +48,8 @@
       </svg>
       <div class="today-inner">
         <p class="today-date" data-today>Azi</p>
-        <h1 id="today-title">Valea Jiului, azi.</h1>
-        <p class="today-lead">Ce e de văzut, ce urmează și de ce ai nevoie, în Petroșani, Petrila, Aninoasa, Vulcan, Lupeni și Uricani.</p>
+        <h1 id="today-title" data-text="hero.title">Valea Jiului, azi.</h1>
+        <p class="today-lead" data-text="hero.lead">Ce e de văzut, ce urmează și de ce ai nevoie, în Petroșani, Petrila, Aninoasa, Vulcan, Lupeni și Uricani.</p>
 
         <div class="today-weather" data-weather aria-live="polite" hidden></div>
 
@@ -85,8 +85,8 @@
     <!-- Agenda -->
     <section class="block" id="agenda" aria-labelledby="agenda-title">
       <div class="block-head">
-        <h2 id="agenda-title">Agenda Văii</h2>
-        <p>Evenimentele le trimit oamenii din Vale. Până se umple calendarul, cele marcate „Exemplu” îți arată cum va arăta.</p>
+        <h2 id="agenda-title" data-text="agenda.title">Agenda Văii</h2>
+        <p data-text="agenda.intro">Evenimentele le trimit oamenii din Vale. Până se umple calendarul, cele marcate „Exemplu” îți arată cum va arăta.</p>
       </div>
       <ol class="agenda" data-agenda></ol>
       <button type="button" class="lamp-button" data-open-publish>Propune un eveniment</button>
@@ -95,8 +95,8 @@
     <!-- Places -->
     <section class="block" id="locuri" aria-labelledby="locuri-title">
       <div class="block-head">
-        <h2 id="locuri-title">Locuri de văzut</h2>
-        <p>Munte, lacuri, istorie. Locuri reale, la câțiva kilometri de casă.</p>
+        <h2 id="locuri-title" data-text="places.title">Locuri de văzut</h2>
+        <p data-text="places.intro">Munte, lacuri, istorie. Locuri reale, la câțiva kilometri de casă.</p>
       </div>
       <div class="places" data-places></div>
     </section>
@@ -104,8 +104,8 @@
     <!-- Trips -->
     <section class="block" id="excursii" aria-labelledby="excursii-title">
       <div class="block-head">
-        <h2 id="excursii-title">Excursii de o zi</h2>
-        <p>Pleci dimineața, te întorci seara.</p>
+        <h2 id="excursii-title" data-text="trips.title">Excursii de o zi</h2>
+        <p data-text="trips.intro">Pleci dimineața, te întorci seara.</p>
       </div>
       <div class="trips" data-trips></div>
     </section>
@@ -113,8 +113,8 @@
     <!-- Listings -->
     <section class="block" id="anunturi" aria-labelledby="anunturi-title">
       <div class="block-head">
-        <h2 id="anunturi-title">Anunțuri</h2>
-        <p>De la oameni din Vale, direct. Fără intermediari.</p>
+        <h2 id="anunturi-title" data-text="listings.title">Anunțuri</h2>
+        <p data-text="listings.intro">De la oameni din Vale, direct. Fără intermediari.</p>
       </div>
       <div class="listings" data-listings></div>
     </section>
@@ -125,7 +125,7 @@
     <section class="valley" aria-labelledby="valley-title">
       <div class="valley-media" aria-hidden="true"><img src="images/parang-vale.jpg" alt="" loading="lazy" width="1400" height="933"></div>
       <div class="valley-inner">
-        <h2 id="valley-title">O vale, șase orașe, un singur loc unde afli tot.</h2>
+        <h2 id="valley-title" data-text="valley.title">O vale, șase orașe, un singur loc unde afli tot.</h2>
         <dl class="valley-facts">
           <div><dt>Orașe</dt><dd>6</dd><p>Petroșani, Petrila, Aninoasa, Vulcan, Lupeni, Uricani</p></div>
           <div><dt>De la Petrila la Uricani</dt><dd>~35 km</dd><p>pe drumul care urmează Jiul</p></div>
@@ -137,8 +137,8 @@
     <!-- Useful -->
     <section class="utile" id="utile" aria-labelledby="utile-title">
       <div class="block-head">
-        <h2 id="utile-title">Lucrurile care te ajută</h2>
-        <p>Numere și locuri de care ai nevoie repede. Apasă și deschizi direct telefonul sau harta.</p>
+        <h2 id="utile-title" data-text="utile.title">Lucrurile care te ajută</h2>
+        <p data-text="utile.intro">Numere și locuri de care ai nevoie repede. Apasă și deschizi direct telefonul sau harta.</p>
       </div>
       <div class="utile-grid">
         <a class="utile-card utile-urgent" href="tel:112"><span class="u-icon" aria-hidden="true">✚</span><strong>Urgențe</strong><small>Sună la 112</small></a>
@@ -153,8 +153,8 @@
     <!-- Community -->
     <section class="community" id="how" aria-labelledby="how-title">
       <div class="community-copy">
-        <h2 id="how-title">Tu aduci ideea.</h2>
-        <p>Ai o cameră de închiriat, un eveniment, un serviciu bun? Spune-ne și îl punem în fața oamenilor din Vale.</p>
+        <h2 id="how-title" data-text="community.title">Tu aduci ideea.</h2>
+        <p data-text="community.text">Ai o cameră de închiriat, un eveniment, un serviciu bun? Spune-ne și îl punem în fața oamenilor din Vale.</p>
         <button class="lamp-button" type="button" data-open-publish>Publică un anunț</button>
       </div>
       <ol class="steps">
@@ -167,8 +167,8 @@
 
   <footer class="site-footer">
     <a class="brand" href="#top"><span class="brand-mark">N</span><span>NEST</span></a>
-    <p>Valea Jiului, locul unde ne găsim unii pe alții.</p>
-    <p class="footer-note">Evenimentele marcate „Exemplu” arată cum va arăta agenda. Unele fotografii sunt ilustrative. Vremea: Open-Meteo.</p>
+    <p data-text="footer.tagline">Valea Jiului, locul unde ne găsim unii pe alții.</p>
+    <p class="footer-note" data-text="footer.note">Evenimentele marcate „Exemplu” arată cum va arăta agenda. Unele fotografii sunt ilustrative. Vremea: Open-Meteo.</p>
     <span>© <span data-year>2026</span> NEST</span>
   </footer>
 
@@ -206,6 +206,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="script.js?v=5" defer></script>
+  <script src="script.js?v=6" defer></script>
 </body>
 </html>

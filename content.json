@@ -1,0 +1,277 @@
+{
+  "texts": {
+    "hero.title": "Valea Jiului, azi.",
+    "hero.lead": "Ce e de văzut, ce urmează și de ce ai nevoie, în Petroșani, Petrila, Aninoasa, Vulcan, Lupeni și Uricani.",
+    "agenda.title": "Agenda Văii",
+    "agenda.intro": "Evenimentele le trimit oamenii din Vale. Până se umple calendarul, cele marcate „Exemplu” îți arată cum va arăta.",
+    "places.title": "Locuri de văzut",
+    "places.intro": "Munte, lacuri, istorie. Locuri reale, la câțiva kilometri de casă.",
+    "trips.title": "Excursii de o zi",
+    "trips.intro": "Pleci dimineața, te întorci seara.",
+    "listings.title": "Anunțuri",
+    "listings.intro": "De la oameni din Vale, direct. Fără intermediari.",
+    "valley.title": "O vale, șase orașe, un singur loc unde afli tot.",
+    "utile.title": "Lucrurile care te ajută",
+    "utile.intro": "Numere și locuri de care ai nevoie repede. Apasă și deschizi direct telefonul sau harta.",
+    "community.title": "Tu aduci ideea.",
+    "community.text": "Ai o cameră de închiriat, un eveniment, un serviciu bun? Spune-ne și îl punem în fața oamenilor din Vale.",
+    "footer.tagline": "Valea Jiului, locul unde ne găsim unii pe alții.",
+    "footer.note": "Evenimentele marcate „Exemplu” arată cum va arăta agenda. Unele fotografii sunt ilustrative. Vremea: Open-Meteo."
+  },
+  "facts": [
+    {
+      "label": "Orașe",
+      "value": "6",
+      "note": "Petroșani, Petrila, Aninoasa, Vulcan, Lupeni, Uricani"
+    },
+    {
+      "label": "De la Petrila la Uricani",
+      "value": "~35 km",
+      "note": "pe drumul care urmează Jiul"
+    },
+    {
+      "label": "Cel mai înalt vârf",
+      "value": "2.519 m",
+      "note": "Parângu Mare, deasupra Petroșaniului"
+    }
+  ],
+  "utile": [
+    {
+      "icon": "✚",
+      "title": "Urgențe",
+      "subtitle": "Sună la 112",
+      "href": "tel:112",
+      "urgent": true
+    },
+    {
+      "icon": "▲",
+      "title": "Salvamont",
+      "subtitle": "0SALVAMONT · 0725 826 668",
+      "href": "tel:0725826668"
+    },
+    {
+      "icon": "↗",
+      "title": "Autogara Petroșani",
+      "subtitle": "Vezi pe hartă",
+      "href": "https://www.google.com/maps/search/?api=1&query=Autogara+Petro%C8%99ani"
+    },
+    {
+      "icon": "═",
+      "title": "Gara Petroșani",
+      "subtitle": "Vezi pe hartă",
+      "href": "https://www.google.com/maps/search/?api=1&query=Gara+Petro%C8%99ani"
+    },
+    {
+      "icon": "⌂",
+      "title": "Primăria Petroșani",
+      "subtitle": "Vezi pe hartă",
+      "href": "https://www.google.com/maps/search/?api=1&query=Prim%C4%83ria+Municipiului+Petro%C8%99ani"
+    },
+    {
+      "icon": "✚",
+      "title": "Spitalul de Urgență",
+      "subtitle": "Vezi pe hartă",
+      "href": "https://www.google.com/maps/search/?api=1&query=Spitalul+de+Urgen%C8%9B%C4%83+Petro%C8%99ani"
+    }
+  ],
+  "steps": [
+    {
+      "title": "Spui ce oferi sau ce cauți",
+      "text": "O casă, o cabană, un serviciu, un eveniment."
+    },
+    {
+      "title": "Îl verificăm și îl publicăm",
+      "text": "Fără anunțuri false și fără recenzii inventate."
+    },
+    {
+      "title": "Oamenii te găsesc direct",
+      "text": "Fără intermediari complicați."
+    }
+  ],
+  "items": [
+    {
+      "id": "parang",
+      "kind": "place",
+      "title": "Munții Parâng",
+      "town": "Petroșani",
+      "img": "images/parang-creasta.jpg",
+      "kicker": "Munte",
+      "tags": [
+        "Trasee",
+        "Telescaun",
+        "2.519 m"
+      ],
+      "text": "Creasta care veghează Valea, cu Vârful Parângu Mare la 2.519 m. Vara, trasee de creastă și lacuri glaciare; iarna, pârtiile stațiunii Parâng, deasupra Petroșaniului.",
+      "map": "Stațiunea Parâng",
+      "gallery": [
+        "images/parang-varf.jpg",
+        "images/parang-vale.jpg"
+      ]
+    },
+    {
+      "id": "straja",
+      "kind": "place",
+      "title": "Stațiunea Straja",
+      "town": "Lupeni",
+      "img": "images/partie-noapte.jpg",
+      "kicker": "Schi",
+      "tags": [
+        "Pârtii iluminate",
+        "Priveliște"
+      ],
+      "text": "Stațiunea de deasupra Lupeniului, cu pârtii iluminate seara în sezonul de iarnă și priveliște peste toată Valea Jiului.",
+      "map": "Stațiunea Straja Lupeni"
+    },
+    {
+      "id": "calcescu",
+      "kind": "place",
+      "title": "Lacul Câlcescu",
+      "town": "Petroșani",
+      "img": "images/lac-glaciar.jpg",
+      "kicker": "Lac glaciar",
+      "tags": [
+        "1.935 m",
+        "Traseu de o zi"
+      ],
+      "text": "Cel mai cunoscut lac glaciar din Parâng, la capătul unui traseu frumos de o zi. Pleacă devreme și verifică vremea pe creastă.",
+      "map": "Lacul Câlcescu"
+    },
+    {
+      "id": "defileu",
+      "kind": "place",
+      "title": "Defileul Jiului",
+      "town": "Petroșani",
+      "img": "images/drum-vale.jpg",
+      "kicker": "Parc național",
+      "tags": [
+        "Natură",
+        "Mănăstirea Lainici"
+      ],
+      "text": "Drumul spre Oltenia se strecoară printre stânci, pe lângă Jiu. Parc național, cu popasuri, poteci și Mănăstirea Lainici pe traseu.",
+      "map": "Parcul Național Defileul Jiului"
+    },
+    {
+      "id": "muzeu",
+      "kind": "place",
+      "title": "Muzeul Mineritului",
+      "town": "Petroșani",
+      "img": null,
+      "icon": "⛏",
+      "kicker": "Istoria locului",
+      "tags": [
+        "Muzeu",
+        "Minerit"
+      ],
+      "text": "Povestea mineritului din Valea Jiului, cu echipamente, fotografii și documente care arată cum s-a construit viața de aici.",
+      "map": "Muzeul Mineritului Petroșani"
+    },
+    {
+      "id": "transalpina",
+      "kind": "trip",
+      "title": "Transalpina",
+      "town": "Petroșani",
+      "img": "images/serpentine.jpg",
+      "kicker": "Cel mai înalt drum din țară",
+      "tags": [
+        "Serpentine",
+        "Doar vara"
+      ],
+      "text": "Drumul care urcă peste Parâng la peste 2.100 m. Deschis doar în sezonul cald; verifică dacă e deschis înainte să pleci.",
+      "map": "Transalpina DN67C"
+    },
+    {
+      "id": "corvin",
+      "kind": "trip",
+      "title": "Castelul Corvinilor",
+      "town": "Hunedoara",
+      "img": "images/castelul-corvinilor.jpg",
+      "kicker": "Castel gotic",
+      "tags": [
+        "~1 h 30 min cu mașina"
+      ],
+      "text": "Unul dintre cele mai frumoase castele gotice din Europa, la aproximativ o oră și jumătate cu mașina din Valea Jiului.",
+      "map": "Castelul Corvinilor Hunedoara"
+    },
+    {
+      "id": "apartament",
+      "kind": "listing",
+      "title": "Apartament 2 camere de închiriat",
+      "town": "Petroșani",
+      "img": "images/living.jpeg",
+      "kicker": "Se oferă · chirie",
+      "tags": [
+        "2 camere",
+        "Mobilat",
+        "Disponibil acum"
+      ],
+      "price": "200 € / lună",
+      "text": "Apartament cu două camere, mobilat și utilat, disponibil acum pentru închiriere în Petroșani.",
+      "map": "Petroșani",
+      "gallery": [
+        "images/dormitor.jpeg",
+        "images/bucatarie.jpeg",
+        "images/baie.jpeg"
+      ]
+    },
+    {
+      "id": "creasta",
+      "kind": "event",
+      "example": true,
+      "title": "Tură pe creasta Parângului",
+      "town": "Petroșani",
+      "img": "images/parang-varf.jpg",
+      "kicker": "Ieșire în natură",
+      "date": {
+        "weekday": 0
+      },
+      "time": "07:30",
+      "where": "Telescaunul Parâng",
+      "tags": [
+        "Drumeție",
+        "Nivel mediu"
+      ],
+      "text": "Urcăm cu telescaunul, apoi pe creastă spre Vârful Parângu Mare. Echipament de munte obligatoriu.",
+      "map": "Telescaun Parâng Petroșani"
+    },
+    {
+      "id": "zile",
+      "kind": "event",
+      "example": true,
+      "title": "Zilele orașului",
+      "town": "Lupeni",
+      "img": "images/festival.jpg",
+      "kicker": "Pentru toți",
+      "date": {
+        "inDays": 12
+      },
+      "time": "10:00",
+      "where": "Centrul orașului",
+      "tags": [
+        "Târg",
+        "Concerte",
+        "Copii"
+      ],
+      "text": "Târg local, concerte, activități pentru copii și gust de sărbătoare.",
+      "map": "Lupeni centru"
+    },
+    {
+      "id": "concert",
+      "kind": "event",
+      "example": true,
+      "title": "Concert în aer liber",
+      "town": "Vulcan",
+      "img": "images/concert.jpg",
+      "kicker": "Muzică",
+      "date": {
+        "weekday": 5
+      },
+      "time": "20:00",
+      "where": "Parcul central",
+      "tags": [
+        "Intrare liberă"
+      ],
+      "text": "O seară de muzică live, cu formații locale.",
+      "map": "Vulcan Hunedoara"
+    }
+  ]
+}

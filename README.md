@@ -19,7 +19,8 @@ Portal comunitar pentru Petroșani, Petrila, Aninoasa, Vulcan, Lupeni și Urican
 
 - Locurile de văzut, excursiile și anunțul de apartament sunt reale.
 - Evenimentele sunt **exemple** (marcate „Exemplu” pe site), cu date calculate față de ziua curentă, până vin evenimente trimise de oameni.
-- Totul se editează în lista `ITEMS` de la începutul lui `script.js`.
+- Tot conținutul (locuri, excursii, anunțuri, evenimente, textele secțiunilor, numerele utile) stă în `content.json`. Se editează din aplicația Organizator (tab-ul „Site-uri”), care face commit pe acest fișier; formularele sunt descrise în `admin/schema.json`.
+- Datele evenimentelor: `"2026-10-10"` (fixă), `{"inDays": 12}` sau `{"weekday": 0}` (următoarea duminică), ca exemplele să nu pară vechi.
 
 ## Fotografii
 

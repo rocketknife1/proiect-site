@@ -1,4 +1,4 @@
-(() => {
+(async () => {
   // West to east along the Jiu, with real longitudes (used to place towns on the valley line)
   const TOWNS = [
     { name: "Uricani", lon: 23.115 },
@@ -32,77 +32,48 @@
   const dayLabel = (d) => d.toLocaleDateString("ro-RO", { weekday: "long", day: "numeric", month: "long" });
 
   /* ------------------------------------------------------------------
-   * CONTENT. "example: true" = demo item, clearly labelled on the site.
-   * Places, trips and the apartment listing are real.
+   * CONTENT lives in content.json, so it can be edited without touching
+   * code (e.g. from the Organizator app, which commits that file).
+   * "example: true" = demo item, clearly labelled on the site.
+   * Event dates: "2026-10-10" (fixed), {"inDays": 12} or {"weekday": 0}
+   * (0 = Sunday; next such day), so example events never look stale.
    * ------------------------------------------------------------------ */
-  const ITEMS = [
-    {
-      id: "parang", kind: "place", title: "Munții Parâng", town: "Petroșani", img: "images/parang-creasta.jpg",
-      kicker: "Munte", tags: ["Trasee", "Telescaun", "2.519 m"],
-      text: "Creasta care veghează Valea, cu Vârful Parângu Mare la 2.519 m. Vara, trasee de creastă și lacuri glaciare; iarna, pârtiile stațiunii Parâng, deasupra Petroșaniului.",
-      map: "Stațiunea Parâng", gallery: ["images/parang-varf.jpg", "images/parang-vale.jpg"],
-    },
-    {
-      id: "straja", kind: "place", title: "Stațiunea Straja", town: "Lupeni", img: "images/partie-noapte.jpg",
-      kicker: "Schi", tags: ["Pârtii iluminate", "Priveliște"],
-      text: "Stațiunea de deasupra Lupeniului, cu pârtii iluminate seara în sezonul de iarnă și priveliște peste toată Valea Jiului.",
-      map: "Stațiunea Straja Lupeni",
-    },
-    {
-      id: "calcescu", kind: "place", title: "Lacul Câlcescu", town: "Petroșani", img: "images/lac-glaciar.jpg",
-      kicker: "Lac glaciar", tags: ["1.935 m", "Traseu de o zi"],
-      text: "Cel mai cunoscut lac glaciar din Parâng, la capătul unui traseu frumos de o zi. Pleacă devreme și verifică vremea pe creastă.",
-      map: "Lacul Câlcescu",
-    },
-    {
-      id: "defileu", kind: "place", title: "Defileul Jiului", town: "Petroșani", img: "images/drum-vale.jpg",
-      kicker: "Parc național", tags: ["Natură", "Mănăstirea Lainici"],
-      text: "Drumul spre Oltenia se strecoară printre stânci, pe lângă Jiu. Parc național, cu popasuri, poteci și Mănăstirea Lainici pe traseu.",
-      map: "Parcul Național Defileul Jiului",
-    },
-    {
-      id: "muzeu", kind: "place", title: "Muzeul Mineritului", town: "Petroșani", img: null, icon: "⛏",
-      kicker: "Istoria locului", tags: ["Muzeu", "Minerit"],
-      text: "Povestea mineritului din Valea Jiului, cu echipamente, fotografii și documente care arată cum s-a construit viața de aici.",
-      map: "Muzeul Mineritului Petroșani",
-    },
-    {
-      id: "transalpina", kind: "trip", title: "Transalpina", town: "Petroșani", img: "images/serpentine.jpg",
-      kicker: "Cel mai înalt drum din țară", tags: ["Serpentine", "Doar vara"],
-      text: "Drumul care urcă peste Parâng la peste 2.100 m. Deschis doar în sezonul cald; verifică dacă e deschis înainte să pleci.",
-      map: "Transalpina DN67C",
-    },
-    {
-      id: "corvin", kind: "trip", title: "Castelul Corvinilor", town: "Hunedoara", img: "images/castelul-corvinilor.jpg",
-      kicker: "Castel gotic", tags: ["~1 h 30 min cu mașina"],
-      text: "Unul dintre cele mai frumoase castele gotice din Europa, la aproximativ o oră și jumătate cu mașina din Valea Jiului.",
-      map: "Castelul Corvinilor Hunedoara",
-    },
-    {
-      id: "apartament", kind: "listing", title: "Apartament 2 camere de închiriat", town: "Petroșani", img: "images/living.jpeg",
-      kicker: "Se oferă · chirie", tags: ["2 camere", "Mobilat", "Disponibil acum"], price: "200 € / lună",
-      text: "Apartament cu două camere, mobilat și utilat, disponibil acum pentru închiriere în Petroșani.",
-      map: "Petroșani", gallery: ["images/dormitor.jpeg", "images/bucatarie.jpeg", "images/baie.jpeg"],
-    },
-    {
-      id: "creasta", kind: "event", example: true, title: "Tură pe creasta Parângului", town: "Petroșani", img: "images/parang-varf.jpg",
-      kicker: "Ieșire în natură", date: nextDay(0), time: "07:30", where: "Telescaunul Parâng", tags: ["Drumeție", "Nivel mediu"],
-      text: "Urcăm cu telescaunul, apoi pe creastă spre Vârful Parângu Mare. Echipament de munte obligatoriu.",
-      map: "Telescaun Parâng Petroșani",
-    },
-    {
-      id: "zile", kind: "event", example: true, title: "Zilele orașului", town: "Lupeni", img: "images/festival.jpg",
-      kicker: "Pentru toți", date: inDays(12), time: "10:00", where: "Centrul orașului", tags: ["Târg", "Concerte", "Copii"],
-      text: "Târg local, concerte, activități pentru copii și gust de sărbătoare.",
-      map: "Lupeni centru",
-    },
-    {
-      id: "concert", kind: "event", example: true, title: "Concert în aer liber", town: "Vulcan", img: "images/concert.jpg",
-      kicker: "Muzică", date: nextDay(5), time: "20:00", where: "Parcul central", tags: ["Intrare liberă"],
-      text: "O seară de muzică live, cu formații locale.",
-      map: "Vulcan Hunedoara",
-    },
-  ];
+  const eventDate = (spec) => {
+    if (spec && typeof spec === "object") {
+      if (spec.weekday != null) return nextDay(spec.weekday, spec.minDays ?? 1);
+      return inDays(spec.inDays ?? 0);
+    }
+    const [y, m, d] = String(spec).split("-").map(Number);
+    return new Date(y, m - 1, d, 12);
+  };
+  let CONTENT = { texts: {}, facts: [], utile: [], steps: [], items: [] };
+  try {
+    const res = await fetch("content.json", { cache: "no-store" });
+    if (res.ok) CONTENT = await res.json();
+  } catch { /* offline or file:// — the page still works, just empty */ }
+  const ITEMS = CONTENT.items.map((i) => (i.kind === "event" ? { ...i, date: eventDate(i.date) } : i));
+
+  /* ---------- Editable texts and small lists ---------- */
+  $$("[data-text]").forEach((el) => {
+    const t = CONTENT.texts?.[el.dataset.text];
+    if (t != null) el.textContent = t;
+  });
+  if (CONTENT.facts?.length) {
+    $(".valley-facts").innerHTML = CONTENT.facts
+      .map((f) => `<div><dt>${esc(f.label)}</dt><dd>${esc(f.value)}</dd><p>${esc(f.note)}</p></div>`)
+      .join("");
+  }
+  if (CONTENT.utile?.length) {
+    $(".utile-grid").innerHTML = CONTENT.utile
+      .map((u) => {
+        const external = /^https?:/.test(u.href) ? ' target="_blank" rel="noopener"' : "";
+        return `<a class="utile-card${u.urgent ? " utile-urgent" : ""}" href="${esc(u.href)}"${external}><span class="u-icon" aria-hidden="true">${esc(u.icon)}</span><strong>${esc(u.title)}</strong><small>${esc(u.subtitle)}</small></a>`;
+      })
+      .join("");
+  }
+  if (CONTENT.steps?.length) {
+    $(".steps").innerHTML = CONTENT.steps.map((st) => `<li><h3>${esc(st.title)}</h3><p>${esc(st.text)}</p></li>`).join("");
+  }
 
   /* ---------- Toast ---------- */
   const toast = $("#toast");
